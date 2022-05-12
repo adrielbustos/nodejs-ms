@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: cygnetops/auth
+          image: us.gcr.io/authpacific-tesinty-23432/auth
 ---
 apiVersion: v1
 kind: Service
