@@ -1,3 +1,4 @@
+require('dotenv').config()
 import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
@@ -28,7 +29,7 @@ app.use(errorHandler);
 
 const start = async () => {
   try {
-    await mongose.connect("mongodb://mongo:ZvprduQDWz69oHIRXeOI@containers-us-west-57.railway.app:6779");
+    await mongose.connect(process.env.mongoURL ?? "");
     // await mongose.connect("mongodb://auth-mongo-srv:27017/auth");
     console.log("connected to mongo");
   } catch (error) {
