@@ -13,7 +13,7 @@ router.post("/api/users/signup", [
         .trim()
         .isLength({min: 4, max:20})
         .withMessage("invalid password")
-], (req:Request, res:Response) => {
+], async (req:Request, res:Response) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         // return res.status(400).send(errors.array());
