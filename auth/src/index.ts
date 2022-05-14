@@ -12,7 +12,7 @@ const start = async () => {
   } catch (error) {
     console.log(error);
   }
-  app.listen(3000, () => {
+  app.listen(3001, () => {
     console.log("Listening on port 3000!");
   });
 };

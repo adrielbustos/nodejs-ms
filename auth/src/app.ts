@@ -1,4 +1,5 @@
 require('dotenv').config()
+const cors = require('cors');
 import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
@@ -18,8 +19,10 @@ app.set("trust proxy", true);
 app.use(json());
 app.use(cookieSession({
   signed: false,
-  secure: process.env.NODE_ENV !== "test"
+  secure: false
+  // secure: process.env.NODE_ENV !== "test"
 }));
+app.use(cors());
 
 app.use(currentUserRouter);
 app.use(signinRouter);
