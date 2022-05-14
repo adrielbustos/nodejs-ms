@@ -15,6 +15,12 @@ spec:
       containers:
         - name: auth
           image: us.gcr.io/authpacific-tesinty-23432/auth
+          env: 
+            - name: jwtSecret
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: jwtSecret
 ---
 apiVersion: v1
 kind: Service

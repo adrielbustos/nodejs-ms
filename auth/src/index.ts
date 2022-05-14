@@ -3,6 +3,7 @@ import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
 import mongose from "mongoose";
+import cookieSession from "cookie-session";
 
 import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
@@ -14,7 +15,12 @@ import { NotFoundError } from "./errors/not-found-error";
 // tsc --init
 
 const app = express();
+app.set("trust proxy", true);
 app.use(json());
+app.use(cookieSession({
+  signed: false,
+  secure: true
+}));
 
 app.use(currentUserRouter);
 app.use(signinRouter);
@@ -28,6 +34,9 @@ app.use("*", async (req, res, next) => {
 app.use(errorHandler);
 
 const start = async () => {
+  if (!process.env.jwtSecret) {
+    throw new Error("secret key not found/define");
+  }
   try {
     await mongose.connect(process.env.mongoURL ?? "");
     // await mongose.connect("mongodb://auth-mongo-srv:27017/auth");
