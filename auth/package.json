@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/adrielbustos/nodejs-ms#readme",
   "dependencies": {
+    "@abgdev/common": "^1.0.2",
     "@types/cookie-session": "^2.0.44",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
