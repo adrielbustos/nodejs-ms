@@ -5,9 +5,12 @@ const start = async () => {
   if (!process.env.jwtSecret) {
     throw new Error("secret key not found/define");
   }
+  if (!process.env.MONGO_URL) {
+    throw new Error("secret key not found/define");
+  }
   try {
     await mongose.connect(process.env.mongoURL ?? "");
-    // await mongose.connect("mongodb://auth-mongo-srv:27017/auth");
+    // await mongose.connect(process.env.MONGO_URL);
     console.log("connected to mongo");
   } catch (error) {
     console.log(error);

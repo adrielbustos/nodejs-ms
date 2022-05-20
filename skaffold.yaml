@@ -26,3 +26,11 @@ build:
             manual:
               - src: "src/**/*.js"
                 dest: .
+    - image: us.gcr.io/ticketspacific-tesinty-23432/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
