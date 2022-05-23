@@ -29,7 +29,7 @@ async (req:Request, res:Response) => {
             id: user.id,
             email: user.email 
         }, 
-        process.env.jwtSecret!
+        process.env.JWT_KEY!
     );
     req.session = {
         jwt: userJwt

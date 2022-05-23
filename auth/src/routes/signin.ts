@@ -33,7 +33,7 @@ async (req: Request, res: Response) => {
             id: existingUser.id,
             email: existingUser.email 
         }, 
-        process.env.jwtSecret!
+        process.env.JWT_KEY!
     );
     req.session = {
         jwt: userJwt

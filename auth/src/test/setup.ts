@@ -6,7 +6,7 @@ import { app } from "../app";
 let mongo: any;
 
 beforeAll(async () => {
-    process.env.jwtSecret = "abc123"
+    process.env.JWT_KEY = "abc123"
     mongo = await MongoMemoryServer.create();
     const mongoUrl = mongo.getUri();
     await mongoose.connect(mongoUrl);
